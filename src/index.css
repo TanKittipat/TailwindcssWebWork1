@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&display=swap");
+
+* {
+  font-family: "Anuphan", sans-serif;
+}
+
+#card img {
+  width: 17rem;
+  height: 12rem;
+  object-fit: cover;
+}
+
+#card {
+  width: 17rem;
+  height: 22rem;
+}
+
+/* #cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.5rem;
+} */
