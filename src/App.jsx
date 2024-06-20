@@ -7,7 +7,7 @@ export default function App() {
         Grab Restaurant
       </h1>
       <div id="search">
-        <label className="input input-bordered flex items-center gap-2 my-5">
+        <label className="input input-bordered flex items-center gap-2 my-5 mx-3">
           <input type="text" className="grow" placeholder="Search" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +24,76 @@ export default function App() {
         </label>
       </div>
       <div className="flex flex-wrap justify-center gap-4" id="cards">
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
+        <Card
+          img={
+            "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
+          }
+          title={"สุกี้โบราณ - คอนโดลุมพินี ชลบุรี"}
+          desc={"อาหารเส้น"}
+        />
         <Card
           img={
             "https://food-cms.grab.com/compressed_webp/merchants/3-C6DWC4DECE4BEN/hero/5c9f447e8ae849fc9245f0ff5ce6675c_1707376518599040939.webp"
