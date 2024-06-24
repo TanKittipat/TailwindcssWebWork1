@@ -10,7 +10,9 @@ const Card = ({ img, title, desc }) => {
         <h2 className="card-title text-sm">{title}</h2>
         <p className="text-sm">{desc}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary btn-sm">Buy Now</button>
+          <button className="btn btn-outline btn-success btn-sm">
+            Buy Now
+          </button>
         </div>
       </div>
     </div>
