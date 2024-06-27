@@ -2,20 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { useState, useEffect } from "react";
 
-const Restaurant = () => {
-  const [restaurants, setRestaurants] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/restaurants")
-      .then((res) => {
-        return res.json();
-      })
-      .then((response) => {
-        setRestaurants(response);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+const Restaurant = ({ restaurants }) => {
   return (
     <div className="flex flex-wrap justify-center gap-4" id="cards">
       {restaurants &&

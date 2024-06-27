@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Search = () => {
+const Search = ({ restaurants, setFilteredRestaurants }) => {
+  const [keyword, setKeyword] = useState("");
+  // const [filtered, setFiltered] = useState([]);
+  const handleChange = async (e) => {
+    setKeyword(e.target.value);
+    // const result = await filter(restaurants, keyword);
+    if (e.target.value === "") {
+      setFilteredRestaurants(restaurants);
+      return;
+    }
+    const result = restaurants.filter((restaurant) => {
+      return (
+        restaurant.title.toLowerCase().includes(keyword.toLowerCase()) ||
+        restaurant.desc.toLowerCase().includes(keyword.toLowerCase())
+      );
+    });
+    console.log(result);
+    setFilteredRestaurants(result);
+  };
+
+  // const filter = (restaurants, keyword) => {
+  //   const result = [];
+  //   for (let i = 0; i <= restaurants.length; i++) {
+  //     if (
+  //       restaurants[i]?.title.includes(keyword) ||
+  //       restaurants[i]?.desc.includes(keyword)
+  //     ) {
+  //       result.push(restaurants[i]);
+  //     }
+  //   }
+  //   return result;
+  // };
   return (
     <div id="search">
       <label className="input input-bordered flex items-center gap-2 my-5 mx-3">
-        <input type="text" className="grow" placeholder="Search" />
+        <input
+          type="text"
+          className="grow"
+          placeholder="Search"
+          onChange={handleChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"

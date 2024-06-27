@@ -2,9 +2,9 @@ import React from "react";
 
 const Card = ({ img, title, desc }) => {
   return (
-    <div className="card w-96 bg-base-100 shadow-xl m-3" id="card">
+    <div className="card bg-base-100 shadow-xl m-3 w-72 h-96" id="card">
       <figure>
-        <img src={img} alt="" className="rounded" />
+        <img src={img} alt="" className="rounded w-72 h-48" />
       </figure>
       <div className="card-body">
         <h2 className="card-title text-sm">{title}</h2>
