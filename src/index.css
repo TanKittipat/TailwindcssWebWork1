@@ -19,9 +19,6 @@
   height: 22rem;
 }
 
-/* #cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 1.5rem;
-} */
+#card:hover {
+  scale: 1.02;
+}
