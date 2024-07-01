@@ -32,20 +32,15 @@ const Navbar = () => {
             <li>
               <a href="/add">Add page</a>
             </li>
-            <li>
-              <a>About</a>
-            </li>
           </ul>
         </div>
       </div>
       <div className="navbar-center">
-        <a href="/" className="btn btn-ghost text-3xl h-28">
+        <a href="/" className="btn btn-ghost text-3xl h-24">
           <Title />
         </a>
       </div>
-      <div className="navbar-end">
-
-      </div>
+      <div className="navbar-end"></div>
     </div>
   );
 };

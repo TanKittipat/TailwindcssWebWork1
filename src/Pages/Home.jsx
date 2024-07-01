@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Restaurant from "../Components/Restaurant";
 import Search from "../Components/Search";
-// import Title from "../Components/Title";
-import Navbar from "../Components/Navbar";
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState([]);
@@ -23,7 +21,6 @@ export default function Home() {
 
   return (
     <div className="container flex flex-row flex-wrap items-center justify-center mx-auto">
-      <Navbar />
       <Search
         restaurants={restaurants}
         setFilteredRestaurants={setFilteredRestaurants}
