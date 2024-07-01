@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ img, title, desc }) => {
+const Card = ({ id, img, title, desc }) => {
   return (
     <div className="card bg-base-100 shadow-xl m-3 w-72 h-96" id="card">
       <figure>
@@ -10,9 +10,12 @@ const Card = ({ img, title, desc }) => {
         <h2 className="card-title text-sm">{title}</h2>
         <p className="text-sm">{desc}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-outline btn-success btn-sm">
-            Buy Now
-          </button>
+          <a
+            href={`/edit/${id}`}
+            className="btn btn-outline btn-warning btn-sm"
+          >
+            แก้ไขร้าน
+          </a>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ const NavbarTwo = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a className="text-base" href="/add">
+              <a className="text-base hover:text-emerald-700" href="/add">
                 Add Restaurant
               </a>
             </li>

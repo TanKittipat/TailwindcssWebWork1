@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-const AddPage = () => {
+const Edit = () => {
+  const { id } = useParams();
   const [restaurant, setRestaurant] = useState({
     title: "",
     desc: "",
     img: "",
   });
+  useEffect(() => {
+    fetch("http://localhost:5000/restaurants/" + id)
+      .then((res) => {
+        return res.json();
+      })
+      .then((response) => {
+        setRestaurant(response);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [id]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name);
@@ -14,12 +28,13 @@ const AddPage = () => {
   };
   const handSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:5000/restaurants", {
-        method: "POST",
+      const response = await fetch("http://localhost:5000/restaurants/" + id, {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
         body: JSON.stringify(restaurant),
       });
       if (response.ok) {
-        alert("Restaurant added successfully!");
+        alert("Restaurant updated!");
         setRestaurant({
           title: "",
           desc: "",
@@ -34,7 +49,7 @@ const AddPage = () => {
     <div className="container flex flex-row flex-wrap items-center justify-center mx-auto">
       <div className="my-12">
         <h1 className="mb-8 text-2xl font-semibold text-center">
-          <span className="text-emerald-700">Add</span> Page
+          <span className="text-amber-500">Edit</span> Page
         </h1>
         <label className="block w-80">
           <span className="block text-base font-medium text-slate-700">
@@ -70,7 +85,9 @@ const AddPage = () => {
           />
         </label>
         <label className="block w-80">
-          <span className="block text-base font-medium text-slate-700">Type :</span>
+          <span className="block text-base font-medium text-slate-700">
+            Type :
+          </span>
           <input
             name="desc"
             id="descInput"
@@ -82,14 +99,14 @@ const AddPage = () => {
           />
         </label>
         <button
-          className="btn btn-outline btn-success my-10"
+          className="btn btn-outline btn-warning my-10"
           onClick={handSubmit}
         >
-          Add new restaurant
+          Edit restaurant
         </button>
       </div>
     </div>
   );
 };
 
-export default AddPage;
+export default Edit;
