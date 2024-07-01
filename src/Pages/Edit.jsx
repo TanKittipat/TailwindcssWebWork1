@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Edit = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState({
     title: "",
     desc: "",
@@ -34,12 +35,13 @@ const Edit = () => {
         body: JSON.stringify(restaurant),
       });
       if (response.ok) {
-        alert("Restaurant updated!");
+        alert(`Restaurant id : ${id} is updated!`);
         setRestaurant({
           title: "",
           desc: "",
           img: "",
         });
+        navigate("/")
       }
     } catch (error) {
       console.log(error);
