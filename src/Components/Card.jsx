@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const Card = ({ id, img, title, desc }) => {
   const handleDelete = async (id) => {
@@ -6,10 +7,19 @@ const Card = ({ id, img, title, desc }) => {
       const response = await fetch("http://localhost:5000/restaurants/" + id, {
         method: "DELETE",
       });
-      if (response.ok) {
-        alert(`Restaurant id : ${id} is Deleted!`);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `Restaurant id: ${id} is deleted!`,
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
         window.location.reload();
-      }
+      });
+      // if (response.ok) {
+      //   alert(`Restaurant id : ${id} is Deleted!`);
+      //   window.location.reload();
+      // }
     } catch (error) {
       console.log(error);
     }
