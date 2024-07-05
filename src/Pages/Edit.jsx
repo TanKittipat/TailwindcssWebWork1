@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Edit = () => {
   const { id } = useParams();
@@ -34,15 +35,29 @@ const Edit = () => {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(restaurant),
       });
-      if (response.ok) {
-        alert(`Restaurant id : ${id} is updated!`);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `Restaurant id: ${id} is edited!`,
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
         setRestaurant({
           title: "",
           desc: "",
           img: "",
         });
-        navigate("/")
-      }
+        navigate("/");
+      });
+      // if (response.ok) {
+      //   alert(`Restaurant id : ${id} is updated!`);
+      //   setRestaurant({
+      //     title: "",
+      //     desc: "",
+      //     img: "",
+      //   });
+      //   navigate("/");
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -84,6 +99,7 @@ const Edit = () => {
             className="input input-bordered w-full max-w-lg my-3"
             onChange={handleChange}
             value={restaurant.title}
+            required
           />
         </label>
         <label className="block w-80">
@@ -98,6 +114,7 @@ const Edit = () => {
             className="input input-bordered w-full max-w-lg my-3"
             onChange={handleChange}
             value={restaurant.desc}
+            required
           />
         </label>
         <button
