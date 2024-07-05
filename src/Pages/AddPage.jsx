@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddPage = () => {
+  const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState({
     title: "",
     desc: "",
@@ -18,14 +21,28 @@ const AddPage = () => {
         method: "POST",
         body: JSON.stringify(restaurant),
       });
-      if (response.ok) {
-        alert("Restaurant added successfully!");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `Restaurant is added!`,
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
         setRestaurant({
           title: "",
           desc: "",
           img: "",
         });
-      }
+        navigate("/");
+      });
+      // if (response.ok) {
+      //   alert("Restaurant added successfully!");
+      //   setRestaurant({
+      //     title: "",
+      //     desc: "",
+      //     img: "",
+      //   });
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -67,10 +84,13 @@ const AddPage = () => {
             className="input input-bordered w-full max-w-lg my-3"
             onChange={handleChange}
             value={restaurant.title}
+            required
           />
         </label>
         <label className="block w-80">
-          <span className="block text-base font-medium text-slate-700">Type :</span>
+          <span className="block text-base font-medium text-slate-700">
+            Type :
+          </span>
           <input
             name="desc"
             id="descInput"
@@ -79,6 +99,7 @@ const AddPage = () => {
             className="input input-bordered w-full max-w-lg my-3"
             onChange={handleChange}
             value={restaurant.desc}
+            required
           />
         </label>
         <button
