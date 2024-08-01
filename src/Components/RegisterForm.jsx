@@ -32,12 +32,14 @@ const RegisterForm = () => {
           text: register.data.message,
           timer: 1500,
         });
+        setUser({ username: "", email: "", userPassword: "" });
+        navigate("/signin");
       }
     } catch (error) {
       Swal.fire({
         icon: "error",
         title: "User Registration",
-        text: error.message,
+        text: error.response.data.message,
         timer: 1500,
       });
     }
