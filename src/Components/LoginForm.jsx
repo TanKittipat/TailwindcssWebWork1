@@ -31,7 +31,7 @@ const LoginForm = () => {
               clipRule="evenodd"
             />
           </svg>
-          <input type="password" className="grow" value="password" />
+          <input type="password" className="grow" placeholder="Password" />
         </label>
         <div className="flex mx-16 justify-between">
           {" "}
