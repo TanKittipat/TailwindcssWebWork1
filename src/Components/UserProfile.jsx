@@ -1,8 +1,6 @@
 import React from "react";
-import { useAuthContext } from "../Context/AuthContext";
 
-const UserProfile = () => {
-  const { logout } = useAuthContext();
+const UserProfile = ({ logout }) => {
   const handleLogOut = () => {
     logout();
   };

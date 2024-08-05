@@ -7,7 +7,7 @@ import RegisterBtn from "./RegisterBtn";
 import { useAuthContext } from "../Context/AuthContext";
 
 const NavbarTwo = () => {
-  const { user } = useAuthContext();
+  const { user, logout } = useAuthContext();
   console.log("user", user);
   return (
     <div>
@@ -26,7 +26,7 @@ const NavbarTwo = () => {
             </li>
           </ul>
           {user ? (
-            <UserProfile />
+            <UserProfile logout={logout} />
           ) : (
             <div className="space-x-2 flex">
               <RegisterBtn />
