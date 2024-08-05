@@ -16,8 +16,7 @@ const LoginForm = () => {
     setUser((user) => ({ ...user, [name]: value }));
   };
 
-  // const { login } = useAuthContext();
-  // รอแก้
+  const { login } = useAuthContext();
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -28,7 +27,7 @@ const LoginForm = () => {
       );
       console.log(currentUser);
       if (currentUser.status === 200) {
-        // login(currentUser);
+        login(currentUser);
         Swal.fire({
           icon: "success",
           title: "User Login",

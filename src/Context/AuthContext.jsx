@@ -13,13 +13,13 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  const getUser = () => {
+  function getUser() {
     // หา user ใน Local storage
     const temp = localStorage.getItem("user");
     // เปลี่ยนเป็น JSON
     const savedUser = JSON.parse(temp);
     return savedUser || null;
-  };
+  }
   //   useEffect รับ callback function กับ Dependencies
   useEffect(() => {
     const temp = JSON.stringify(user);

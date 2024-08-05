@@ -4,9 +4,11 @@ import Search from "./Search";
 import UserProfile from "./UserProfile";
 import LoginBtn from "./LoginBtn";
 import RegisterBtn from "./RegisterBtn";
+import { useAuthContext } from "../Context/AuthContext";
 
 const NavbarTwo = () => {
-  const user = null;
+  const { user } = useAuthContext();
+  console.log("user", user);
   return (
     <div>
       <div className="navbar bg-base-100 h-24 shadow-md mb-12">

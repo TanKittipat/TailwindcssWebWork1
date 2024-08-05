@@ -1,6 +1,11 @@
-import React from 'react'
+import React from "react";
+import { useAuthContext } from "../Context/AuthContext";
 
 const UserProfile = () => {
+  const { logout } = useAuthContext();
+  const handleLogOut = () => {
+    logout();
+  };
   return (
     <div>
       {" "}
@@ -31,12 +36,12 @@ const UserProfile = () => {
             <a>Settings</a>
           </li>
           <li>
-            <a>Logout</a>
+            <a onClick={handleLogOut}>Logout</a>
           </li>
         </ul>
       </div>
     </div>
   );
-}
+};
 
-export default UserProfile
+export default UserProfile;
