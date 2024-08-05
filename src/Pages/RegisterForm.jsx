@@ -70,6 +70,7 @@ const RegisterForm = () => {
             placeholder="Username"
             name="username"
             onChange={handleChange}
+            value={user.username}
             required
           />
         </label>
@@ -89,6 +90,7 @@ const RegisterForm = () => {
             placeholder="Email"
             name="email"
             onChange={handleChange}
+            value={user.email}
             required
           />
         </label>
@@ -111,6 +113,7 @@ const RegisterForm = () => {
             placeholder="Password"
             name="userPassword"
             onChange={handleChange}
+            value={user.userPassword}
             required
           />
         </label>
