@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const Card = ({ id, img, title, desc }) => {
+const Card = ({ id, imgUrl, name, type }) => {
   const handleDelete = async (id) => {
     try {
       const response = await fetch("http://localhost:5000/restaurants/" + id, {
@@ -27,11 +27,11 @@ const Card = ({ id, img, title, desc }) => {
   return (
     <div className="card bg-base-100 shadow-xl m-3 w-72 h-96" id="card">
       <figure>
-        <img src={img} alt="" className="rounded w-72 h-48" />
+        <img src={imgUrl} alt="" className="rounded w-72 h-48" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title text-sm">{title}</h2>
-        <p className="text-sm">{desc}</p>
+        <h2 className="card-title text-sm">{name}</h2>
+        <p className="text-sm">{type}</p>
         <div className="card-actions justify-center">
           <a
             href={`/edit/${id}`}

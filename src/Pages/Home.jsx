@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from "react";
 import Restaurant from "../Components/Restaurant";
 import Search from "../Components/Search";
+import RestaurantService from "../Services/restaurant.service";
+import Swal from "sweetalert2";
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/restaurants")
-      .then((res) => {
-        return res.json();
-      })
-      .then((response) => {
-        setRestaurants(response);
-        setFilteredRestaurants(response);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    const getRestaurants = async () => {
+      try {
+        const response = await RestaurantService.getAllRestaurant();
+        if (response.status === 200) {
+          setRestaurants(response.data);
+          setFilteredRestaurants(response.data);
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Get all Restaurant",
+          text: error?.response?.data?.message || error.message,
+          timer: 1500,
+        });
+      }
+    };
+    getRestaurants();
   }, []);
 
   return (

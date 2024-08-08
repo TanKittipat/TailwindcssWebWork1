@@ -47,7 +47,7 @@ const LoginForm = () => {
       Swal.fire({
         icon: "error",
         title: "User Login",
-        text: error?.response?.data?.message || error,
+        text: error?.response?.data?.message || error.message,
         timer: 1500,
       });
     }

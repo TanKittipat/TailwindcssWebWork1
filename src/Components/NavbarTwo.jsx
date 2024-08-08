@@ -28,8 +28,12 @@ const NavbarTwo = () => {
           {user && (
             <div className="space-x-2 flex mr-2">
               Welcome, <span className="text-emerald-700">{user.username}</span>
-              {user.roles.map((role) => {
-                return <div className="badge badge-accent">{role}</div>;
+              {user.roles.map((role, index) => {
+                return (
+                  <div key={index} className="badge badge-accent">
+                    {role}
+                  </div>
+                );
               })}
             </div>
           )}
