@@ -7,7 +7,9 @@ const Layout = () => {
   return (
     <AuthProvider>
       <NavbarTwo />
-      <Outlet />
+      <div className="h-screen">
+        <Outlet />
+      </div>
       <Footer />
     </AuthProvider>
   );

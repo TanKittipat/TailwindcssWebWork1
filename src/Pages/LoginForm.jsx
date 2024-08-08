@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import AuthService from "../Services/auth.service";
 import { useAuthContext } from "../Context/AuthContext";
@@ -16,7 +16,13 @@ const LoginForm = () => {
     setUser((user) => ({ ...user, [name]: value }));
   };
 
-  const { login } = useAuthContext();
+  const { login, user: loggedInUser } = useAuthContext();
+  useEffect(() => {
+    if (loggedInUser) {
+      navigate("/");
+    }
+  }, [loggedInUser]);
+
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -27,7 +33,7 @@ const LoginForm = () => {
       );
       console.log(currentUser);
       if (currentUser.status === 200) {
-        login(currentUser);
+        login(currentUser.data);
         Swal.fire({
           icon: "success",
           title: "User Login",
