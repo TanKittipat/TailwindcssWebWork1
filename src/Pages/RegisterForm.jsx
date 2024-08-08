@@ -50,7 +50,7 @@ const RegisterForm = () => {
     navigate("/");
   };
   return (
-    <div className="container flex flex-row flex-wrap items-center justify-center mx-auto">
+    <div className="container flex flex-row flex-wrap items-center justify-center mx-auto mb-48">
       <div className="my-12">
         <h1 className="mb-8 text-2xl font-semibold text-center">
           <span className="text-indigo-800">Sign up</span> Page
