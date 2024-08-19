@@ -1,65 +1,53 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import RestaurantService from "../Services/restaurant.service";
 
 const Edit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState({
-    title: "",
-    desc: "",
-    img: "",
+    name: "",
+    type: "",
+    imgUrl: "",
   });
+  // get restaurant id
   useEffect(() => {
-    fetch("http://localhost:5000/restaurants/" + id)
-      .then((res) => {
-        return res.json();
-      })
-      .then((response) => {
-        setRestaurant(response);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    RestaurantService.getRestaurantById(id).then((response) => {
+      if (response.status === 200) {
+        setRestaurant(response.data);
+      }
+    });
   }, [id]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name);
     console.log(value);
     setRestaurant({ ...restaurant, [name]: value });
   };
+
   const handSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:5000/restaurants/" + id, {
-        method: "PUT",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(restaurant),
-      });
+      const response = await RestaurantService.updateRestaurant(id, restaurant);
+      if (response.status === 200) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `Restaurant Update`,
+          text: response.data.message,
+          timer: 1500,
+        });
+      }
+      navigate("/");
+    } catch (error) {
       Swal.fire({
         position: "center",
-        icon: "success",
-        title: `Restaurant id: ${id} is edited!`,
-        showConfirmButton: false,
+        icon: "error",
+        title: `Restaurant Update`,
+        text: error?.response?.data?.message,
         timer: 1500,
-      }).then(() => {
-        setRestaurant({
-          title: "",
-          desc: "",
-          img: "",
-        });
-        navigate("/");
       });
-      // if (response.ok) {
-      //   alert(`Restaurant id : ${id} is updated!`);
-      //   setRestaurant({
-      //     title: "",
-      //     desc: "",
-      //     img: "",
-      //   });
-      //   navigate("/");
-      // }
-    } catch (error) {
-      console.log(error);
     }
   };
   return (
@@ -73,18 +61,18 @@ const Edit = () => {
             Image :
           </span>
           <input
-            name="img"
+            name="imgUrl"
             id="imgInput"
             type="text"
             placeholder="Input image link here :"
             className="input input-bordered w-full max-w-lg my-3"
             onChange={handleChange}
-            value={restaurant.img}
+            value={restaurant.imgUrl}
           />
         </label>
-        {restaurant.img && (
+        {restaurant.imgUrl && (
           <div>
-            <img src={restaurant.img} className="h-32 my-3" />
+            <img src={restaurant.imgUrl} className="h-32 my-3" />
           </div>
         )}
         <label className="block w-80">
@@ -92,13 +80,13 @@ const Edit = () => {
             Title :
           </span>
           <input
-            name="title"
+            name="name"
             id="titleInput"
             type="text"
             placeholder="Input title here :"
             className="input input-bordered w-full max-w-lg my-3"
             onChange={handleChange}
-            value={restaurant.title}
+            value={restaurant.name}
             required
           />
         </label>
@@ -107,13 +95,13 @@ const Edit = () => {
             Type :
           </span>
           <input
-            name="desc"
+            name="type"
             id="descInput"
             type="text"
             placeholder="Input type here :"
             className="input input-bordered w-full max-w-lg my-3"
             onChange={handleChange}
-            value={restaurant.desc}
+            value={restaurant.type}
             required
           />
         </label>
