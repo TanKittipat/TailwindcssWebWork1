@@ -12,26 +12,14 @@ const Search = ({ restaurants, setFilteredRestaurants }) => {
     }
     const result = restaurants.filter((restaurant) => {
       return (
-        restaurant.title.toLowerCase().includes(keyword.toLowerCase()) ||
-        restaurant.desc.toLowerCase().includes(keyword.toLowerCase())
+        restaurant.name.toLowerCase().includes(keyword.toLowerCase()) ||
+        restaurant.type.toLowerCase().includes(keyword.toLowerCase())
       );
     });
     console.log(result);
     setFilteredRestaurants(result);
   };
 
-  // const filter = (restaurants, keyword) => {
-  //   const result = [];
-  //   for (let i = 0; i <= restaurants.length; i++) {
-  //     if (
-  //       restaurants[i]?.title.includes(keyword) ||
-  //       restaurants[i]?.desc.includes(keyword)
-  //     ) {
-  //       result.push(restaurants[i]);
-  //     }
-  //   }
-  //   return result;
-  // };
   return (
     <label className="input input-bordered flex items-center gap-2 my-5 mx-3 w-9/12">
       <input

@@ -16,10 +16,20 @@ const updateRestaurant = async (id, restaurant) => {
   return await api.put(RESTO_API + `/${id}`, restaurant);
 };
 
+const deleteRestaurant = async (id) => {
+  return await api.delete(RESTO_API + `/${id}`);
+};
+
+const addRestaurant = async (restaurant) => {
+  return await api.post(RESTO_API, restaurant);
+};
+
 const RestaurantService = {
   getAllRestaurant,
   getRestaurantById,
   updateRestaurant,
+  deleteRestaurant,
+  addRestaurant,
 };
 
 export default RestaurantService;

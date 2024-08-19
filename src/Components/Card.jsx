@@ -1,27 +1,33 @@
 import React from "react";
 import Swal from "sweetalert2";
+import RestaurantService from "../Services/restaurant.service";
+import { useAuthContext } from "../Context/AuthContext";
 
 const Card = ({ id, imgUrl, name, type }) => {
+  const { user } = useAuthContext();
+
   const handleDelete = async (id) => {
     try {
-      const response = await fetch("http://localhost:5000/restaurants/" + id, {
-        method: "DELETE",
-      });
+      const response = await RestaurantService.deleteRestaurant(id);
+      if (response.status === 200) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `Restaurant Delete`,
+          text: response.data.message,
+          timer: 1500,
+        }).then(() => {
+          window.location.reload();
+        });
+      }
+    } catch (error) {
       Swal.fire({
         position: "center",
-        icon: "success",
-        title: `Restaurant id: ${id} is deleted!`,
-        showConfirmButton: false,
+        icon: "error",
+        title: `Restaurant Delete`,
+        text: error?.response?.data?.message,
         timer: 1500,
-      }).then(() => {
-        window.location.reload();
       });
-      // if (response.ok) {
-      //   alert(`Restaurant id : ${id} is Deleted!`);
-      //   window.location.reload();
-      // }
-    } catch (error) {
-      console.log(error);
     }
   };
   return (
@@ -32,20 +38,26 @@ const Card = ({ id, imgUrl, name, type }) => {
       <div className="card-body">
         <h2 className="card-title text-sm">{name}</h2>
         <p className="text-sm">{type}</p>
-        <div className="card-actions justify-center">
-          <a
-            href={`/edit/${id}`}
-            className="btn btn-outline btn-warning btn-sm"
-          >
-            แก้ไขร้าน
-          </a>
-          <button
-            className="btn btn-outline btn-error btn-sm"
-            onClick={() => handleDelete(id)}
-          >
-            ลบร้าน
-          </button>
-        </div>
+        {user &&
+          (user.roles.includes("ROLES_MODERATOR") ||
+            user.roles.includes("ROLES_ADMIN")) && (
+            <div className="card-actions justify-center">
+              <a
+                href={`/edit/${id}`}
+                className="btn btn-outline btn-warning btn-sm"
+              >
+                แก้ไขร้าน
+              </a>
+              {user.roles.includes("ROLES_ADMIN") && (
+                <button
+                  className="btn btn-outline btn-error btn-sm"
+                  onClick={() => handleDelete(id)}
+                >
+                  ลบร้าน
+                </button>
+              )}
+            </div>
+          )}
       </div>
     </div>
   );

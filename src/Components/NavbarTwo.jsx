@@ -19,11 +19,15 @@ const NavbarTwo = () => {
         </div>
         <div className="navbar-end">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <a className="text-base hover:text-emerald-700" href="/add">
-                Add Restaurant
-              </a>
-            </li>
+            {user &&
+              (user.roles.includes("ROLES_MODERATOR") ||
+                user.roles.includes("ROLES_ADMIN")) && (
+                <li>
+                  <a className="text-base hover:text-emerald-700" href="/add">
+                    Add Restaurant
+                  </a>
+                </li>
+              )}
           </ul>
           {user && (
             <div className="space-x-2 flex mr-2">
