@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import RestaurantService from "../Services/restaurant.service";
@@ -6,6 +6,18 @@ import { useAuthContext } from "../Context/AuthContext";
 
 const AddPage = () => {
   const { user } = useAuthContext();
+  useEffect(() => {
+    if (
+      !user ||
+      (user &&
+        !(
+          user.roles.includes("ROLES_MODERATOR") ||
+          user.roles.includes("ROLES_ADMIN")
+        ))
+    ) {
+      navigate("/");
+    }
+  }, [user]);
   const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState({
     name: "",
