@@ -6,6 +6,8 @@ import RegisterForm from "../Pages/RegisterForm";
 import LoginForm from "../Pages/LoginForm";
 import Layout from "../Components/Layout";
 import AdminLayout from "../Components/AdminLayout";
+import AdminOrMod from "./AdminOrMod";
+import NotPermitted from "../Pages/NotPermitted";
 
 const router = createBrowserRouter([
   {
@@ -18,11 +20,19 @@ const router = createBrowserRouter([
       },
       {
         path: "add",
-        element: <AddPage />,
+        element: (
+          <AdminOrMod>
+            <AddPage />
+          </AdminOrMod>
+        ),
       },
       {
         path: "edit/:id",
-        element: <Edit />,
+        element: (
+          <AdminOrMod>
+            <Edit />
+          </AdminOrMod>
+        ),
       },
       {
         path: "signup",
@@ -31,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "signin",
         element: <LoginForm />,
+      },
+      {
+        path: "notallowed",
+        element: <NotPermitted />,
       },
     ],
   },

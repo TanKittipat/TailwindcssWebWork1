@@ -8,9 +8,11 @@ import { useAuthContext } from "../Context/AuthContext";
 
 const Navbar = () => {
   const { user, logout } = useAuthContext();
+  // อย่าลืมเพิ่ม role ให้ครบ เพราะถ้า user ที่ login มี role ที่ไม่มีขึ้นมาก่อนจะ error!!!
   const navMenu = {
     ROLES_ADMIN: [{ name: "Add Restaurant", link: "/add" }],
     ROLES_MODERATOR: [{ name: "Add Restaurant", link: "/add" }],
+    ROLES_USER: [],
   };
 
   return (
@@ -21,7 +23,7 @@ const Navbar = () => {
             <span className="text-emerald-700">Grab</span> Restaurants
           </a>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end space-x-2">
           <ul className="menu menu-horizontal px-1">
             {user &&
               navMenu[user.roles[0]].map((menuItem) => (
