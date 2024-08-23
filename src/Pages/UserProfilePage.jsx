@@ -31,15 +31,34 @@ const UserProfilePage = () => {
       <div className="hero my-40">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
-            src="../assets/profile2.jpg"
+            src="https://raw.githubusercontent.com/TanKittipat/TailwindcssWebWork1/Restful-api/src/assets/profile2.jpg"
             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div className="w-96">
-            <h1 className="text-5xl font-bold">Box Office News!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+            <h1 className="text-5xl font-bold">
+              <span className="text-violet-800">{user.username}</span> Profile
+            </h1>
+            <p className="pt-6">
+              User Id : <span className="text-slate-100">{user.id}</span>
+            </p>{" "}
+            <p className="pt-2">
+              Email : <span className="text-slate-100">{user.email}</span>
+            </p>
+            <p className="pt-2">
+              Roles :{" "}
+              <span className="text-slate-100">
+                {user?.roles.map((role) => role).join(", ")}
+              </span>
+            </p>
+            <p className="pt-2 pb-6">
+              Token :{" "}
+              <span className="text-slate-100">
+                {concealedText(
+                  user.accessToken,
+                  3,
+                  user.accessToken.length - 3
+                )}
+              </span>
             </p>
             <button className="btn btn-secondary" onClick={handleBack}>
               Go back
