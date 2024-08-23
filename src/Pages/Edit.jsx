@@ -5,19 +5,19 @@ import RestaurantService from "../Services/restaurant.service";
 import { useAuthContext } from "../Context/AuthContext";
 
 const Edit = () => {
-  const { user } = useAuthContext();
-  useEffect(() => {
-    if (
-      !user ||
-      (user &&
-        !(
-          user.roles.includes("ROLES_MODERATOR") ||
-          user.roles.includes("ROLES_ADMIN")
-        ))
-    ) {
-      navigate("/");
-    }
-  }, [user]);
+  // const { user } = useAuthContext();
+  // useEffect(() => {
+  //   if (
+  //     !user ||
+  //     (user &&
+  //       !(
+  //         user.roles.includes("ROLES_MODERATOR") ||
+  //         user.roles.includes("ROLES_ADMIN")
+  //       ))
+  //   ) {
+  //     navigate("/");
+  //   }
+  // }, [user]);
 
   const { id } = useParams();
   const navigate = useNavigate();

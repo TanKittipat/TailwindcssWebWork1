@@ -6,9 +6,13 @@ import LoginBtn from "./LoginBtn";
 import RegisterBtn from "./RegisterBtn";
 import { useAuthContext } from "../Context/AuthContext";
 
-const NavbarTwo = () => {
+const Navbar = () => {
   const { user, logout } = useAuthContext();
-  console.log("user", user);
+  const navMenu = {
+    ROLES_ADMIN: [{ name: "Add Restaurant", link: "/add" }],
+    ROLES_MODERATOR: [{ name: "Add Restaurant", link: "/add" }],
+  };
+
   return (
     <div>
       <div className="navbar bg-base-100 h-24 shadow-md mb-12">
@@ -20,14 +24,16 @@ const NavbarTwo = () => {
         <div className="navbar-end">
           <ul className="menu menu-horizontal px-1">
             {user &&
-              (user.roles.includes("ROLES_MODERATOR") ||
-                user.roles.includes("ROLES_ADMIN")) && (
-                <li>
-                  <a className="text-base hover:text-emerald-700" href="/add">
-                    Add Restaurant
+              navMenu[user.roles[0]].map((menuItem) => (
+                <li key={menuItem.name}>
+                  <a
+                    className="text-base hover:text-emerald-700"
+                    href={menuItem.link}
+                  >
+                    {menuItem.name}{" "}
                   </a>
                 </li>
-              )}
+              ))}
           </ul>
           {user && (
             <div className="space-x-2 flex mr-2">
@@ -55,4 +61,4 @@ const NavbarTwo = () => {
   );
 };
 
-export default NavbarTwo;
+export default Navbar;

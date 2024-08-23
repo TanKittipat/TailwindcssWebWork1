@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { AuthProvider } from "../Context/AuthContext";
-import NavbarTwo from "./NavbarTwo";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Layout = () => {
   return (
     <AuthProvider>
-      <NavbarTwo />
+      <Navbar />
       <div className="my-9">
         <Outlet />
       </div>

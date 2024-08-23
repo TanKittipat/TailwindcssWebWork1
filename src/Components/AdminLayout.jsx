@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { AuthProvider } from "../Context/AuthContext";
-import NavbarTwo from "./NavbarTwo";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const AdminLayout = () => {
   return (
     <AuthProvider>
-      <NavbarTwo />
+      <Navbar />
       <Outlet />
       <Footer />
     </AuthProvider>
