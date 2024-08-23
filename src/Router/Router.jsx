@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 // lazy คือตัวที่นำมาใช้โหลดตัว animation มาแสดงก่อน
 import { lazy } from "react";
+import UserProfilePage from "../Pages/UserProfilePage";
+import UserRedirect from "./UserRedirect";
 
 // เปลี่ยนวิธี import มาใช้ lazy
 const Home = lazy(() => import("../Pages/Home"));
@@ -59,6 +61,14 @@ const router = createBrowserRouter([
       {
         path: "notallowed",
         element: <NotPermitted />,
+      },
+      {
+        path: "userprofile",
+        element: (
+          <UserRedirect>
+            <UserProfilePage />
+          </UserRedirect>
+        ),
       },
     ],
   },
